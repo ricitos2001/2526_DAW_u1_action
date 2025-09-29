@@ -1,4 +1,4 @@
-# 📚 Actividad: *GitHub Actions: entendiendo Workflow.*
+# 1. Actividad: *GitHub Actions: entendiendo Workflow.*
 
 ## 🎯 Objetivos de aprendizaje
 

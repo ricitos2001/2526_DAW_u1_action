@@ -171,6 +171,9 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
+permissions:
+  contents: write   # 👈 IMPORTANTE: permite que el bot pueda hacer commits/push
+
 jobs:
   test-and-update:
     runs-on: ubuntu-latest
@@ -201,10 +204,11 @@ jobs:
 ## 🚦 Flujo de la actividad
 
 1. Cuando se haga un **push** en `main`.
-2. El workflow ejecuta el script en Python.
-3. El script corre los tests y modifica el `README.md`.
-4. La acción `git-auto-commit-action` hace commit automático con los cambios.
-5. El alumno ve en el repo cómo el `README.md` se actualiza con:
+2. Se le da permiso de escritura para hacer commits/push al repositorio.
+3. El workflow ejecuta el script en Python.
+4. El script corre los tests y modifica el `README.md`.
+5. La acción `git-auto-commit-action` hace commit automático con los cambios.
+6. El alumno ve en el repo cómo el `README.md` se actualiza con:
     
     * ✅ Tests correctos
     * ❌ Tests fallidos

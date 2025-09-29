@@ -1,9 +1,9 @@
 name: CI con AutoCommit
 
-on:
-  push:
-    branches: [ "main" ]
-  workflow_dispatch:
+# on:
+#   push:
+#     branches: [ "main" ]
+#   workflow_dispatch:
 
 permissions:
   contents: write   # 👈 IMPORTANTE: permite que el bot pueda hacer commits/push

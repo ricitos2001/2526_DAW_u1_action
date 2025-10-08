@@ -17,7 +17,7 @@ def update_readme(status: str):
     for line in lines:
         new_lines.append(line)
         if line.strip() == "## Estado de los tests":
-            new_lines.append(status + " - " + timestamp + "\n")
+            new_lines.append("- " + status + " - " + timestamp + "\n")
 
     with open("README.md", "w", encoding="utf-8") as f:
         f.writelines(new_lines)

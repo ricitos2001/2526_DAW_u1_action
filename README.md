@@ -345,9 +345,11 @@ Este proyecto sirve para aprender a usar GitHub Actions 🚀
 ### a.) Identificación de herramientas de generación de documentación. ¿Qué herramienta o generador (p. ej., Sphinx, pdoc, Javadoc, Doxygen, Dokka) utilizaste en el workflow para crear la documentación en /docs?
 
 - He utilizado la herramienta de pydoc3 para generar un HTML tras haber comentado el codigo que hay en el modulo main
+![](./assets/img/imagen1.png)
 ### b.) Documentación de componentes. Muestra un fragmento del código con comentarios/docstrings estructurados (p. ej., :param, :return: o etiquetas equivalentes) que haya sido procesado por la herramienta. Comenta que estilo de documentación has utlicado: (p. ej., reStructuredText, Google Style, KDoc)
 
 - He comentado el trozo de codigo que hay en el modulo main utilizando docstrings ya que para generar la documentacion de codigo con pydoc3 es necesario que el codigo este comentad
+https://github.com/ricitos2001/2526_DAW_u1_action/blob/0c387ebe67a334ec321967004957823840ef2086/main.py#L1-L6
 ### c.) Multiformato. ¿Qué segundo formato (además de HTML) generaste? Explica la configuración o comandos del workflow y herramientas que lo producen.
 
 - He intentado generar un archivo de markdown utilizando sphinx

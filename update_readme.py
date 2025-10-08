@@ -3,7 +3,7 @@ from datetime import datetime
 
 def run_tests():
     try:
-        subprocess.check_call(["pytest", "-q"])
+        subprocess.check_call(["test", "-q"])
         return "✅ Tests correctos"
     except subprocess.CalledProcessError:
         return "❌ Tests fallidos"

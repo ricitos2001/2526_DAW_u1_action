@@ -339,3 +339,33 @@ Este proyecto sirve para aprender a usar GitHub Actions 🚀
 ## Estado de los tests
 - ✅ Tests correctos - 2025-10-08 17:13:16
 - ✅ Tests correctos - 2025-10-08 17:12:26
+
+## Preguntas frecuentes
+### a.) Identificación de herramientas de generación de documentación. ¿Qué herramienta o generador (p. ej., Sphinx, pdoc, Javadoc, Doxygen, Dokka) utilizaste en el workflow para crear la documentación en /docs?
+
+- He utilizado la herramienta de pydoc3 para generar un HTML tras haber comentado el codigo que hay en el modulo main
+### b.) Documentación de componentes. Muestra un fragmento del código con comentarios/docstrings estructurados (p. ej., :param, :return: o etiquetas equivalentes) que haya sido procesado por la herramienta. Comenta que estilo de documentación has utlicado: (p. ej., reStructuredText, Google Style, KDoc)
+
+- He comentado el trozo de codigo que hay en el modulo main utilizando docstrings
+### c.) Multiformato. ¿Qué segundo formato (además de HTML) generaste? Explica la configuración o comandos del workflow y herramientas que lo producen.
+
+- He intentado generar un archivo de markdown utilizando sphinx
+### d.) Colaboración. Explica cómo GitHub facilita mantener la documentación (actualizaciones del README.md y de /docs) cuando colaboran varias personas (PRs, reviews, checks de CI, protección de ramas).
+
+- Mediante los pull request cada colaborador de un proyecto de Github propone sus cambios
+- Mediante las reviews se aprueban si los cambios de una pull request son correctos antes de fusionar la rama se solicitan cambios en caso de detectar algun error y se utilizan sugerencias de linea para proponer edicciones de texto de forma directa
+- Mediante los Checks de CI se pueden automatizar verificaciones de documentacion
+- Mediante la proteccion de ramas se evita que los cambios lleguen de pull requests que no fueron aprobadas, ademas se exigen que los checks de CI pasen de forma correcta antes de realizar un merge e impide que los commits directos rompan el repositorio
+### e.) Control de versiones. Muestra mensajes de commit que evidencien el nuevo workflow. ¿Son claros y descriptivos? Justifícalo. Ademas de un conjunto de mensajes de tus commits.
+
+- Los mensajes del commit son claros y explicitos ya que dichos mensajes dicen que es lo que se ha modificado exactamente
+### f.) Accesibilidad y seguridad. ¿Qué medidas/configuración del repositorio garantizan que solo personal autorizado accede al código y la documentación? (p. ej., repositorio privado, equipos, roles, claves/secretos, branch protection).
+
+- Que el repositorio esta configurado como privado lo cual hace que solo los usuarios con acceso al repositorio por parte del administrador puedan verlo
+### g.) Instalación/uso documentados. Indica dónde en el README.md explicas el funcionamiento del workflow y dónde detallas las herramientas y comandos de documentación.
+
+- He implementado una mejora en el codigo que hace que por cada vez que se ejecuta el workflow se añadira el resultado de los test con la fecha en la que se realizo en el propio README.md
+### h.) Integración continua. Justifica por qué el workflow utilizado es CI. ¿Qué evento dispara automáticamente la generación/actualización de la documentación (p. ej., push, pull_request, workflow_dispatch)?
+
+- El workflow es CI ya que este ejecuta pruebas unitarias que comprueban que cada uno de los componentes del software funcionen de forma correcta y aislada ademas de que dichos componentes interactuen entre si validando las dependencias y la comunicacion entre partes del sistema.
+- Los eventos encargado de disparar de forma automatica la actualizacion del README.md es push y un workflow_dispatch

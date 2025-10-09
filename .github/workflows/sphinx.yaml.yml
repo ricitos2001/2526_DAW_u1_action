@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # 👈 IMPORTANTE: permite que el bot pueda hacer commits/push
+  contents: write
   pages: write
   id-token: write
 

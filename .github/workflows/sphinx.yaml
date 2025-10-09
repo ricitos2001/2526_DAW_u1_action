@@ -1,24 +1,44 @@
-name: sphinx.yaml
+name: Publish Sphinx Docs
+
 on:
   push:
-    branches: [ "main" ]
-  workflow_dispatch:
+    branches: ["main"]
 
 permissions:
-  contents: write #
+  contents: read
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  publish:
-    name: Publish Sphinx Pages
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Sphinx documentation
+        uses: Kjuly/sphinx-builder@main
+        with:
+          source_root: docs/source
+          build_root: docs/build
+          default_lang: en
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/build/html
+
+  deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    needs: build
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Publish Pages
+      - name: Deploy to GitHub Pages
         id: deployment
-        uses: Kjuly/sphinx-publisher@main
+        uses: actions/deploy-pages@v4

@@ -41,7 +41,7 @@ jobs:
 
       - name: Configurar Sphinx
         run: |
-          mkdir -p docs/sphinx
+          mkdir docs/sphinx
           sphinx-quickstart docs/sphinx -q -p "Proyecto Python" -a "Equipo" -v "1.0" --sep --ext-autodoc --makefile --batchfile
           echo "import os, sys; sys.path.insert(0, os.path.abspath('../..'))" >> docs/sphinx/source/conf.py
           echo "extensions = ['sphinx.ext.autodoc']" >> docs/sphinx/source/conf.py

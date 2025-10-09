@@ -21,14 +21,56 @@ jobs:
         with:
           python-version: '3.10'
 
+
+
       - name: Instalar dependencias
         run: pip install pytest
 
       - name: Ejecutar script de tests y actualizar README
         run: python update_readme.py
 
+      - name: Generar documentación HTML con pydoc
+        run: |
+          mkdir -p docs/html
+          # Generar documentación HTML de todos los módulos Python del proyecto
+          for file in $(find . -name "*.py" -not -path "./venv/*"); do
+            module=$(basename "$file" .py)
+            pydoc -w "${module}"
+          done
+          mv *.html docs/html/ || true
+
+      - name: Configurar Sphinx
+        run: |
+          mkdir -p docs/sphinx
+          sphinx-quickstart docs/sphinx -q -p "Proyecto Python" -a "Equipo" -v "1.0" --sep --ext-autodoc --makefile --batchfile
+          echo "import os, sys; sys.path.insert(0, os.path.abspath('../..'))" >> docs/sphinx/source/conf.py
+          echo "extensions = ['sphinx.ext.autodoc']" >> docs/sphinx/source/conf.py
+          echo "html_theme = 'sphinx_rtd_theme'" >> docs/sphinx/source/conf.py
+          # Añadir módulos al índice
+          echo ".. automodule:: main" >> docs/sphinx/source/index.rst
+          echo "   :members:" >> docs/sphinx/source/index.rst
+
+      - name: Generar documentación HTML con Sphinx
+        run: |
+          sphinx-build -b html docs/sphinx/source docs/sphinx/build/html
+
+      - name: Generar PDF con Sphinx (LaTeX)
+        run: |
+          sudo apt-get update && sudo apt-get install -y latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+          sphinx-build -b latex docs/sphinx/source docs/sphinx/build/latex
+          make -C docs/sphinx/build/latex all-pdf
+
+      - name: Subir artefactos generados
+        uses: actions/upload-artifact@v4
+        with:
+          name: Documentacion
+          path: |
+            docs/html
+            docs/sphinx/build/html
+            docs/sphinx/build/latex/*.pdf
+
       - name: Commit automático del README
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Update README con estado de tests"
+          commit_message: "Update README con estado de tests y generación de documentación"
           file_pattern: README.md

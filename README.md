@@ -353,7 +353,7 @@ Este proyecto sirve para aprender a usar GitHub Actions 🚀
 https://github.com/ricitos2001/2526_DAW_u1_action/blob/0c387ebe67a334ec321967004957823840ef2086/main.py#L1-L6
 ### c.) Multiformato. ¿Qué segundo formato (además de HTML) generaste? Explica la configuración o comandos del workflow y herramientas que lo producen.
 
-- He intentado generar un archivo de markdown utilizando sphinx
+- He intentado generar un archivo de markdown utilizando sphinx posteriormente intente modificar el workflow `ci.yaml` para que me generase la documentacion de forma automatica utilizando pydoc para generar el HTML y utilizando sphinx para generar el PDF
 ### d.) Colaboración. Explica cómo GitHub facilita mantener la documentación (actualizaciones del README.md y de /docs) cuando colaboran varias personas (PRs, reviews, checks de CI, protección de ramas).
 
 - Mediante los pull request cada colaborador de un proyecto de Github propone sus cambios
@@ -365,7 +365,7 @@ https://github.com/ricitos2001/2526_DAW_u1_action/blob/0c387ebe67a334ec321967004
 - Los mensajes del commit son claros y explicitos ya que dichos mensajes dicen que es lo que se ha modificado exactamente
 ### f.) Accesibilidad y seguridad. ¿Qué medidas/configuración del repositorio garantizan que solo personal autorizado accede al código y la documentación? (p. ej., repositorio privado, equipos, roles, claves/secretos, branch protection).
 
-- Que el repositorio esta configurado como privado lo cual hace que solo los usuarios con acceso al repositorio por parte del administrador puedan verlo
+- El repositorio esta configurado como publico para que otros usuarios puedan verlo pero a su vez el acceso a este es limitado ya que se configuro el acceso al repositorio por medio de una SSH-key lo cual evita que personas ajena puedan realizar commits en la rama principal del repositorio y evitando que alguien se cargue el proyecto
 ### g.) Instalación/uso documentados. Indica dónde en el README.md explicas el funcionamiento del workflow y dónde detallas las herramientas y comandos de documentación.
 
 - He implementado una mejora en el codigo que hace que por cada vez que se ejecuta el workflow se añadira el resultado de los test con la fecha en la que se realizo en el propio README.md

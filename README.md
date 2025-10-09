@@ -363,7 +363,7 @@ Este proyecto sirve para aprender a usar GitHub Actions 🚀
 https://github.com/ricitos2001/2526_DAW_u1_action/blob/0c387ebe67a334ec321967004957823840ef2086/main.py#L1-L6
 ### c.) Multiformato. ¿Qué segundo formato (además de HTML) generaste? Explica la configuración o comandos del workflow y herramientas que lo producen.
 
-- He intentado generar un archivo de markdown utilizando sphinx
+- He intentado generar una pagina web con un workflow que utiliza sphinx y github Pages para la documentacion de codigo
 ### d.) Colaboración. Explica cómo GitHub facilita mantener la documentación (actualizaciones del README.md y de /docs) cuando colaboran varias personas (PRs, reviews, checks de CI, protección de ramas).
 
 - Mediante los pull request cada colaborador de un proyecto de Github propone sus cambios

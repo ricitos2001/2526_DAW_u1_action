@@ -30,10 +30,20 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
       - id: set-matrix
-        run: echo "::set-output name=matrix::$(ls slides/*.html | sed -e 's/slides\/\(.*\).html/\1/' | jq -R -s -c 'split("\n")[:-1]' )"
-  
+        run: |
+          mkdir -p slides
+          files=$(ls slides/*.html 2>/dev/null || true)
+          if [ -z "$files" ]; then
+            echo "⚠️ No se encontraron archivos HTML en slides/"
+            matrix='["none"]'
+          else
+            matrix=$(echo "$files" | sed -e 's/slides\/\(.*\).html/\1/' | jq -R -s -c 'split("\n")[:-1]')
+          fi
+          echo "Matriz generada: $matrix"
+          echo "matrix=$matrix" >> $GITHUB_OUTPUT
   generate_pdf:
     needs: list-files
     runs-on: ubuntu-latest
